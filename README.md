@@ -22,7 +22,7 @@ UNIX File System Browser, SSH, and File Syncing Utility
 		
 		  UNIX Command Syntax Sugar  
 		
-		xawk [n].......equivalent to awk '{print $^[n]}', remove ^
+		xawk [n].......equivalent to awk '{print $[n]}'
 		
 		  Windows  
 		
