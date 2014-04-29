@@ -11,8 +11,7 @@ UNIX File System Browser, SSH, and File Syncing Utility
 		               assumes that dropship file exists in the remote server home directory 
 		detail.........shows which are files and which are directories	
 		d..............cd to a previously visited directory
-		do.............allow typing a UNIX command and run it limitation
-		f..............go to or cd to the first directory
+		do.............allow typing a UNIX command and run it (some commands are not supported)					f..............go to or cd to the first directory
 		aa.............go to or cd to home directory
 		<enter>........list files and directories
 		<unknown>......may open target existing file, go to the directory with similar name, or run UNIX command
