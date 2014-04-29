@@ -19,7 +19,7 @@ from any directory. Otherwise, run the script as '. xdropshipverX.sh'
 so that the directory location is preserved when exiting the program.
 
 
-Commands
+Commands (Help):
 		
 		remoteconfig...configure remote server address  
 		ssshuw.........ssh (remote shell) to remote server 
