@@ -8,13 +8,13 @@ UNIX File System Browser, SSH, and File Syncing Utility
 Compatibility:
 
 Like any other bash scripts, make sure to run the script from Cygwin in Windows.
-For Mac and Unix users, it should be okay to run this script as an executable.
-However, features specific to Windows + Cygwin will not work as indicated in
+For Mac and Linux users, it should be okay to run this script as an executable.
+However, features specific to Windows + Cygwin will not work as indicated in the
 help section.
 
 Running:
 
-It is recommended to add a short cut to this program so that it can be run
+It is recommended to add a shortcut to this program so that it can be run
 from any directory. Otherwise, run the script as '. xdropshipverX.sh'
 so that the directory location is preserved when exiting the program.
 
