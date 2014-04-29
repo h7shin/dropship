@@ -2,6 +2,8 @@
 
 # DROPSHIP VER 6 - FALCON
 
+# Copyright Hyunwook Shin 2014
+
 # INITIALIZE FILE DIRECTORIES --------------------------------------------
 mkdir ~/dropshiprepos/ 				2> /dev/null
 mkdir ~/dropshiprepos/DownloadStore 2> /dev/null
@@ -214,6 +216,7 @@ gethelp () {
 		echo "about..........about Dropship"
 }
 # ABOUT ------------------------------------------------------------------------
+
 about () {
 echo ""
 		echo -e "                   \e[1;32mXDropship\e[0m  Ver 6 FALCON         "
@@ -234,6 +237,7 @@ echo ""
 }
 
 # CONFIGURE REMOTE SSH SETTING ------------------------------------------------
+
 configure () {
 		cat ~/dropshiprepos/remoteconfig.txt 2> /dev/null
 		echo "username:"
@@ -246,6 +250,9 @@ configure () {
 }
 
 # LINK TWO STAGES -------------------------------------------------------------
+
+# Linkstages allows users to set relationship between two directories
+# so that they can be synced 
 
 linkstages() {
 		#same as linkcomplete but with remote server directory (you must use beacon)
@@ -279,6 +286,10 @@ linkstages() {
 		echo "Link Completed!"
 }
 # SYNCSTAGES ------------------------------------------------------------------
+
+# Syncstages syncs two or more directories together (one of them is a primary directory,
+# and the others are secondary (remote or local) directories) 
+
 syncstages() {
 	array_primary=()
 	array_secondary=()
@@ -335,7 +346,6 @@ syncstages() {
 			mkdir "${secondary//=/ }" 2> /dev/null
 			
 			if [ "$command" == "importoverwrite" ]; then
-					
 					secondarytoprimary=1
 			elif [ "$command" == "exportoverwrite" ]; then
 					primarytosecondary=1
@@ -359,13 +369,12 @@ syncstages() {
 					echo "No matching command found (Press Enter to continue)"
 					read bufer
 			fi
-			
+
 			if [ $primarytosecondary -eq 1 ]; then
 				cp "${primary//=/ }/"* "${secondary//=/ }/"
 			fi
 			
 			if [ $secondarytoprimary -eq 1 ]; then
-				
 				cp "${secondary//=/ }/"* "${primary//=/ }/"
 				echo "setting"
 			fi
@@ -540,7 +549,6 @@ do
 		whereami
 	elif [ "$input" == "z" ]
 	then
-
 		downpppv="$downpprv"
 		downpprv="$downprev"
 		downprev="$down"
@@ -566,12 +574,10 @@ do
 		down="$downprev"
 		downprev="$downpprv"
 		downpprv="$downpppv"
-
 		cd $(ls -l | grep -m 1 "^d" | awk '{print $9}' )
 		whereami
 	elif [ "$input" == "d" ]
 	then
-
 		echo "Moving down a directory (cd $input)"
 		#echo "$down"
 		cd "$down"
