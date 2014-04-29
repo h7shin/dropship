@@ -20,17 +20,17 @@ UNIX File System Browser, SSH, and File Syncing Utility
 		run............run an executable
 		
 		
-		  UNIX Command Syntax Sugar  
+		UNIX Command Syntax Sugar  
 		
 		xawk [n].......equivalent to awk '{print $[n]}'
 		
-		  Windows  
+		Windows  
 		
 		show...........show target directory in Windows (Cygwin only)
 		pop............show currend directory in Windows (Cygwin only)
 		
 		
-		  Navigation Assistant Components 
+		Navigation Assistant Components 
 		
 		p..............select a directory
 		flag...........flag the location of the current directory
@@ -45,7 +45,7 @@ UNIX File System Browser, SSH, and File Syncing Utility
 		search.........search in favourites (if not found in history) for files with keywords
 		lookup.........look up a file or directory under current directory
 		
-		  Download Components 
+		Download Components 
 		
 		downloads......cd to DownloadStore in dropship repository
 		import.........move a file from a download folder (must be set by the browser)
@@ -79,7 +79,7 @@ UNIX File System Browser, SSH, and File Syncing Utility
 		zipfiles.......zip some files in a directory using temp directory
 		zipsourcecode..zip .h and .cc files for submission
 		
-		 mSetting Components
+		Setting Components
 		
 		historyoff.....turn off history tracking
 		historyon......turn on history tracking
@@ -88,7 +88,7 @@ UNIX File System Browser, SSH, and File Syncing Utility
 		repository.....go to dropship setting repository
 		clearhistory...clear history
 		
-		 Clipboard  [V.5.3]
+		Clipboard  [V.5.3]
 		
 		copytext......to copy a text to clipboard to be pasted
 		copied........to show copied text
@@ -96,15 +96,15 @@ UNIX File System Browser, SSH, and File Syncing Utility
 		copypwd.......path to current directory saved to the clipboard
 		copyaddwin....Windows path to current directory saved to the clipboard
 		
-		 Valgrind   [V.5.3]
+		Valgrind   [V.5.3]
 		
-		xvalgrind......valgrind compiled porgram from all .cc files in the current directory
+		xvalgrind......valgrind compiled program from all .cc files in the current directory
 		
-		 Redirect  [V.5.3]
+		Redirect  [V.5.3]
 		
 		x>.............type input to be redirected to a file
 		
-		 Plugin Setting
+		Plugin Setting
 		
 		setpath........set path to dropship program
 		plugin.........run list of plugins (you can add plugin program under the <setting repository>/Plugin)
