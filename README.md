@@ -5,114 +5,114 @@ UNIX File System Browser, SSH, and File Syncing Utility
 
 	HELP
 		
-		remoteconfig...configure remote server address  <br>
-		ssshuw.........ssh (remote shell) to remote server <br>
-		sshuw..........ssh to remote server running xdropship 5.0+ under home <br>
-		               assumes that dropship file exists in the remote server home directory <br>
-		detail.........shows which are files and which are directories	<br>
-		d..............cd to a previously visited directory<br>
-		do.............allow typing a UNIX command and run it limitation<br>
-		f..............go to or cd to the first directory<br>
-		aa.............go to or cd to home directory<br>
-		<enter>........list files and directories<br>
-		<unknown>......may open target existing file, go to the directory with similar name, or run UNIX command<br>
-		z..............move up a directory<br>
-		run............run an executable<br><br>
+		remoteconfig...configure remote server address  
+		ssshuw.........ssh (remote shell) to remote server 
+		sshuw..........ssh to remote server running xdropship 5.0+ under home 
+		               assumes that dropship file exists in the remote server home directory 
+		detail.........shows which are files and which are directories	
+		d..............cd to a previously visited directory
+		do.............allow typing a UNIX command and run it limitation
+		f..............go to or cd to the first directory
+		aa.............go to or cd to home directory
+		<enter>........list files and directories
+		<unknown>......may open target existing file, go to the directory with similar name, or run UNIX command
+		z..............move up a directory
+		run............run an executable
 		
 		
-		  UNIX Command Syntax Sugar  <br>
+		  UNIX Command Syntax Sugar  
 		
-		xawk [n].......equivalent to awk '{print $^[n]}', remove ^<br><br>
+		xawk [n].......equivalent to awk '{print $^[n]}', remove ^
 		
-		  Windows  <br><br>
+		  Windows  
 		
-		show...........show target directory in Windows (Cygwin only)<br>
-		pop............show currend directory in Windows (Cygwin only)<br><br>
+		show...........show target directory in Windows (Cygwin only)
+		pop............show currend directory in Windows (Cygwin only)
 		
 		
-		  Navigation Assistant Components <br><br>
+		  Navigation Assistant Components 
 		
-		p..............select a directory<br>
-		flag...........flag the location of the current directory<br>
-		goback.........go back to the last flagged directory location (see d)<br>
-		favthis........Save the current directory paths in favourites<br>
-		favedit........edit the list of favourites on vi		<br>
-		favs...........open the list of favourites to go to (cd to)		<br>
-		favclear.......clear the list of favourites		<br>
-		sink...........cd to deepest directory under favourites from current directory<br>
-		copytofav......copy current directories to one of favourites 	<br>
-		tree...........show file tree<br>
-		search.........search in favourites (if not found in history) for files with keywords<br>
-		lookup.........look up a file or directory under current directory<br><br>
+		p..............select a directory
+		flag...........flag the location of the current directory
+		goback.........go back to the last flagged directory location (see d)
+		favthis........Save the current directory paths in favourites
+		favedit........edit the list of favourites on vi		
+		favs...........open the list of favourites to go to (cd to)		
+		favclear.......clear the list of favourites		
+		sink...........cd to deepest directory under favourites from current directory
+		copytofav......copy current directories to one of favourites 	
+		tree...........show file tree
+		search.........search in favourites (if not found in history) for files with keywords
+		lookup.........look up a file or directory under current directory
 		
-		  Download Components <br><br>
+		  Download Components 
 		
-		downloads......cd to DownloadStore in dropship repository<br>
-		import.........move a file from a download folder (must be set by the browser)<br>
-		(Type repository, go to DownloadStore (directory) and type pop)<br>
-		tag............tag the current directory so that files with filename '...<tag>...' <br>
-		can be imported to this directory<br>
-		importx........import all files in download folders by tags see 'tag'<br>
-		tagedit........edit the list of tags on vi		<br>
-		tags...........open the list of tags		<br>
-		tagclear.......clear the list of tags	<br><br>
+		downloads......cd to DownloadStore in dropship repository
+		import.........move a file from a download folder (must be set by the browser)
+		(Type repository, go to DownloadStore (directory) and type pop)
+		tag............tag the current directory so that files with filename '...<tag>...' 
+		can be imported to this directory
+		importx........import all files in download folders by tags see 'tag'
+		tagedit........edit the list of tags on vi		
+		tags...........open the list of tags		
+		tagclear.......clear the list of tags	
 		
-		Stage Tools [V.5.2] <br><br>
+		Stage Tools [V.5.2] 
 		
-		setstage.......set the current directory as a primary stage<br>
-		linkstage......[after primarystage]set the current directory as a secondary stage<br>
-		linkremote.....[after primarystage]set remote directory as a secondary stage<br>
-		editstages.....edit stage links<br>
-		syncstages.....sync linked stages (if duplicates found files in the primary stage are used)<br>
+		setstage.......set the current directory as a primary stage
+		linkstage......[after primarystage]set the current directory as a secondary stage
+		linkremote.....[after primarystage]set remote directory as a secondary stage
+		editstages.....edit stage links
+		syncstages.....sync linked stages (if duplicates found files in the primary stage are used)
 		
-		File Manipulation Components<br><br>
+		File Manipulation Components
 		
-		copy...........copy a file<br>
-		paste..........paste a copied file<br>
-		pasteremote....paste a copied file to remote server<br>
-		tray...........list of files in the tray<br>
-		filltray.......copy barch of files to the tray with a keyword<br>
-		cuttray........cut batch of files to the tray with a keyword<br>
-		pastetray......paste a cut files from the tray, tray contents are removed<br>
-		cleartray......clear tray<br>
-		zip............zip a directory<br>
-		zipfiles.......zip some files in a directory using temp directory<br>
-		zipsourcecode..zip .h and .cc files for submission<br><br>
+		copy...........copy a file
+		paste..........paste a copied file
+		pasteremote....paste a copied file to remote server
+		tray...........list of files in the tray
+		filltray.......copy barch of files to the tray with a keyword
+		cuttray........cut batch of files to the tray with a keyword
+		pastetray......paste a cut files from the tray, tray contents are removed
+		cleartray......clear tray
+		zip............zip a directory
+		zipfiles.......zip some files in a directory using temp directory
+		zipsourcecode..zip .h and .cc files for submission
 		
-		 mSetting Components<br><br>
+		 mSetting Components
 		
-		historyoff.....turn off history tracking<br>
-		historyon......turn on history tracking<br>
-		history........view history<br>
-		historyedit....edit history<br>
-		repository.....go to dropship setting repository<br>
-		clearhistory...clear history<br><br>
+		historyoff.....turn off history tracking
+		historyon......turn on history tracking
+		history........view history
+		historyedit....edit history
+		repository.....go to dropship setting repository
+		clearhistory...clear history
 		
-		 Clipboard  [V.5.3]<br><br>
+		 Clipboard  [V.5.3]
 		
-		copytext......to copy a text to clipboard to be pasted<br>
-		copied........to show copied text<br>
-		l.............last input command saved to the clipboard<br>
-		copypwd.......path to current directory saved to the clipboard<br>
-		copyaddwin....Windows path to current directory saved to the clipboard<br><br>
+		copytext......to copy a text to clipboard to be pasted
+		copied........to show copied text
+		l.............last input command saved to the clipboard
+		copypwd.......path to current directory saved to the clipboard
+		copyaddwin....Windows path to current directory saved to the clipboard
 		
-		 Valgrind   [V.5.3]<br><br>
+		 Valgrind   [V.5.3]
 		
-		xvalgrind......valgrind compiled porgram from all .cc files in the current directory<br><br>
+		xvalgrind......valgrind compiled porgram from all .cc files in the current directory
 		
-		 Redirect  [V.5.3]<br><br>
+		 Redirect  [V.5.3]
 		
-		x>.............type input to be redirected to a file<br><br>
+		x>.............type input to be redirected to a file
 		
-		 Plugin Setting<br><br>
+		 Plugin Setting
 		
-		setpath........set path to dropship program<br>
-		plugin.........run list of plugins (you can add plugin program under the <setting repository>/Plugin)<br><br>
+		setpath........set path to dropship program
+		plugin.........run list of plugins (you can add plugin program under the <setting repository>/Plugin)
 		
-		 Localhost Macro Setting<br><br>
+		 Localhost Macro Setting
 		
-		setlocalhost...set current directory path as localhost (you must have localhost beforehand)<br>
-		launch.........run program in under local server		<br>
-		exit...........exit Dropship		<br>
-		goout..........exit Dropship		<br>
-		about..........about Dropship<br>
+		setlocalhost...set current directory path as localhost (you must have localhost beforehand)
+		launch.........run program in under local server		
+		exit...........exit Dropship		
+		goout..........exit Dropship		
+		about..........about Dropship
