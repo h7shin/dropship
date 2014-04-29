@@ -290,8 +290,8 @@ syncstages() {
 	echo " importexplicit:   Make current directory identical to secondary stage"
 	echo " exportexplicit:   Make secondary stage identical to current directory"
 		
-	echo " importremoteoverwrite: Overwrite current files with files from remote stage"
-	echo " exportremoteoverwrite: Overwrite remote stage files with current stage"
+	echo " importremote: 	 Overwrite current files with files from remote stage"
+	echo " exportremote: 	 Overwrite remote stage files with current stage"
 	echo "Enter command: "
 	read command
 	
@@ -317,74 +317,84 @@ syncstages() {
 	i=0
 	for link in "${array_primary[@]}"
 	do
-
+		echo "Analyzing link ..."
 			
 		primary="${array_primary[$i]}"
 		secondary="${array_secondary[$i]}"		
 		location=$(pwd)
+		num=$(echo $secondary | egrep "@" | wc -w)
 		fixedlocation="${location// /=}"
 		num2=$(echo $primary | egrep "${location// /=}" | wc -w)
-		echo "Remote?" $num
-		echo "Curent directory?" $num2
-		echo "${location// /=}"
-			
-		mkdir "${secondary//=/ }" 2> /dev/null
+		#echo $primary | egrep "$location" 
+		echo "Remote...?" $num
+		#echo "Curent directory?" $num2
+		echo "${primary}|"
+		echo "${location}|"
 		
-		if [ "$command" == "importoverwrite" ]; then
+		if [ "${primary}" == "${location}" ]; then
+			mkdir "${secondary//=/ }" 2> /dev/null
+			
+			if [ "$command" == "importoverwrite" ]; then
+					
+					secondarytoprimary=1
+			elif [ "$command" == "exportoverwrite" ]; then
+					primarytosecondary=1
+			elif [ "$command" == "unionoverwrite" ]; then
+					primarytosecondary=1
+					secondarytoprimary=1
+			elif [ "$command" == "importexplicit" ]; then
+					echo "Press enter to proceed to delete current files"
+					read buffer
+					rm -r *
+					secondarytoprimary=1
+			elif [ "$command" == "exportexplicit" ]; then
+					primarytosecondary=1
+					deleterestsecondary=1
+			elif [ "$command" == "importremote" ]; then
+					remotetoprimary=1					
+			elif [ "$command" == "exportremote" ]; then
+					echo "Remote Export ..."
+					primarytoremote=1
+			else
+					echo "No matching command found (Press Enter to continue)"
+					read bufer
+			fi
+			
+			if [ $primarytosecondary -eq 1 ]; then
+				cp "${primary//=/ }/"* "${secondary//=/ }/"
+			fi
+			
+			if [ $secondarytoprimary -eq 1 ]; then
 				
-				secondarytoprimary=1
-		elif [ "$command" == "exportoverwrite" ]; then
-				primarytosecondary=1
-		elif [ "$command" == "unionoverwrite" ]; then
-				primarytosecondary=1
-				secondarytoprimary=1
-		elif [ "$command" == "importexplicit" ]; then
-				echo "Press enter to proceed to delete current files"
-				read buffer
-				rm -r *
-				secondarytoprimary=1
-		elif [ "$command" == "exportexplicit" ]; then
-				primarytosecondary=1
-				deleterestsecondary=1
-		elif [ "$command" == "importremoteoverwrite" ]; then
-				remotetoprimarydir=1					
-		elif [ "$command" == "exportremoteoverwrite" ]; then
-				primarytoremotedir=1
-		fi
-		
-		if [ $primarytosecondary -eq 1 ]; then
-			cp "${primary//=/ }/"* "${secondary//=/ }/"
-		fi
-		
-		if [ $secondarytoprimary -eq 1 ]; then
+				cp "${secondary//=/ }/"* "${primary//=/ }/"
+				echo "setting"
+			fi
 			
-			cp "${secondary//=/ }/"* "${primary//=/ }/"
-			echo "setting"
+			if [ $deleterestsecondary -eq 1 ]; then
+				location=$(pwd)
+				cd "${secondary//=/ }/"
+				rm -r $(diff -bur ../"${primary//=/ }" ../"${secondary//=/ }" | awk '{print $4}')
+				fixedlocation="${location// /=}"
+				cd "${fixedlocation//=/ }/"
+			fi
+			
+			if [ $primarytosecondarydir -eq 1 ]; then
+				cp -r "${primary//=/ }/"* "${secondary//=/ }/"
+			fi
+			if [ $primarytoremote -eq 1 -a $num -eq 1 ]; then
+				scp "${primary//=/ }/"* "${secondary//=/ }/"
+			fi 
+			if [ $remotetoprimary -eq 1 -a $num -eq 1 ]; then
+				scp "${secondary//=/ }/"* "${primary//=/ }/"
+			fi
+			if [ $primarytoremotedir -eq 1 -a $num -eq 1 ]; then
+				scp -r "${primary//=/ }/"* "${secondary//=/ }/"
+			fi 
+			if [ $remotetoprimarydir -eq 1 -a $num -eq 1 ]; then
+				scp -r "${secondary//=/ }/"* "${primary//=/ }/"
+			fi	
 		fi
-		
-		if [ $deleterestsecondary -eq 1 ]; then
-			location=$(pwd)
-			cd "${secondary//=/ }/"
-			rm -r $(diff -bur ../"${primary//=/ }" ../"${secondary//=/ }" | awk '{print $4}')
-			fixedlocation="${location// /=}"
-			cd "${fixedlocation//=/ }/"
-		fi
-		
-		if [ $primarytosecondarydir -eq 1 ]; then
-			cp -r "${primary//=/ }/"* "${secondary//=/ }/"
-		fi
-		if [ $primarytoremote -eq 1 ]; then
-			scp "${primary//=/ }/"* "${secondary//=/ }/"
-		fi 
-		if [ $remotetoprimary -eq 1 ]; then
-			scp "${secondary//=/ }/"* "${primary//=/ }/"
-		fi
-		if [ $primarytoremotedir -eq 1 ]; then
-			scp -r "${primary//=/ }/"* "${secondary//=/ }/"
-		fi 
-		if [ $remotetoprimarydir -eq 1 ]; then
-			scp -r "${secondary//=/ }/"* "${primary//=/ }/"
-		fi		
+		i=$(($i+1))
 	done
 }
 
