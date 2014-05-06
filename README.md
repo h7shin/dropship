@@ -1,6 +1,8 @@
 dropship
 ========
 
+Get the seamless and productive user experience out of any OS.
+
 Description:
 
 UNIX File System Browser, SSH, and File Syncing Utility 
