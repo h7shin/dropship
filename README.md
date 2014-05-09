@@ -25,6 +25,10 @@ Commands (Help):
 		
 HELP
 
+	
+		
+	HELP
+
 		sshgo..........ssh to remote server running xdropship 5.0+ under home
 		               assumes that dropship file exists in the remote server home directory
 		detail.........shows which are files and which are directories	
@@ -37,23 +41,23 @@ HELP
 		z..............move up a directory
 		run............run an executable
 		
-		echo   Google Search 
+		Google Search 
 		
 		google........search the web with Google (Windows + Cygwin)
 		xgoogle.......search the web with Google (Unix)
 		
 		
-		echo  UNIX Command Syntax Sugar  
+		UNIX Command Syntax Sugar  
 		
 		xawk [n].......equivalent to awk '{print $^[n]}', ignore ^
 		
-		echo  Windows  
+		Windows  
 		
 		show...........show target directory in Windows (Cygwin only)
 		pop............show currend directory in Windows (Cygwin only)
 		
 		
-		echo  Navigation Assistant Components 
+		Navigation Assistant Components 
 		
 		p..............select a directory
 		flag...........flag the location of the current directory
@@ -68,7 +72,7 @@ HELP
 		search.........search in favourites (if not found in history) for files with keywords
 		lookup.........look up a file or directory under current directory
 		
-		echo  Download Components 
+		Download Components 
 		
 		downloads......cd to DownloadStore in dropship repository
 		import.........move a file from a download folder (must be set by the browser)
@@ -138,7 +142,7 @@ HELP
 		
 		Valgrind   [V.5.3]
 		
-		xvalgrind......valgrind compiled porgram from all .cc files in the current directory
+		xvalgrind......valgrind compiled program from all .cc files in the current directory
 		
 		Redirect  [V.5.3]
 		
