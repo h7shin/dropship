@@ -25,7 +25,6 @@ Commands (Help):
 		
 HELP
 
-		setprivate.....configure path to private key  
 		sshgo..........ssh to remote server running xdropship 5.0+ under home
 		               assumes that dropship file exists in the remote server home directory
 		detail.........shows which are files and which are directories	
