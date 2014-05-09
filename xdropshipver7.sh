@@ -282,35 +282,35 @@ configure () {
 # Linkstages allows users to set relationship between two directories
 # so that they can be synced 
 linkstages() {
-		#same as linkcomplete but with remote server directory (you must use beacon)
-		linkdirscd=$(pwd)
-		if [ $linkdir != "" ]; then
+	#same as linkcomplete but with remote server directory (you must use beacon)
+	linkdirscd=$(pwd)
+	if [ $linkdir != "" ]; then
+	
+		echo "username: (Enter to skip as h7shin)"
+		read username
+		echo "server: (Enter to skip as linux.student.cs.uwaterloo.ca)"
+		read server
+		echo "Path from remote home directory to dropship bash script (Must be Compatible with Version 5+ Check about) :"
+		read path
+		echo "Navigate to the directory in the remote server by SSH and type exit"
 		
-			echo "username: (Enter to skip as h7shin)"
-			read username
-			echo "server: (Enter to skip as linux.student.cs.uwaterloo.ca)"
-			read server
-			echo "Path from remote home directory to dropship bash script (Must be Compatible with Version 5+ Check about) :"
-			read path
-			echo "Navigate to the directory in the remote server by SSH and type exit"
-			
-			if [ "$username" == "" ]
-			then
-				username="h7shin"
-			fi
-			if [ "$server" == "" ]
-			then
-				server="linux.student.cs.uwaterloo.ca"
-			fi
-			#echo "ssh $user@$server . xdropshipver5.sh;pwd"
-			ssh $username@$server "cd $path;. xdropshipver5.sh;"
-			scp $username@$server:~/dropshiprepos/last.path last_temp.path
-			linkdirscd=$(cat last_temp.path)
-			rm last_temp.path
-			echo "${linkdir// /=}^$username@$server:${linkdirscd// /=}" >> ~/dropshiprepos/stage.txt
-			
+		if [ "$username" == "" ]
+		then
+			username="h7shin"
 		fi
-		echo "Link Completed!"
+		if [ "$server" == "" ]
+		then
+			server="linux.student.cs.uwaterloo.ca"
+		fi
+		#echo "ssh $user@$server . xdropshipver5.sh;pwd"
+		ssh $username@$server "cd $path;. xdropshipver5.sh;"
+		scp $username@$server:~/dropshiprepos/last.path last_temp.path
+		linkdirscd=$(cat last_temp.path)
+		rm last_temp.path
+		echo "${linkdir// /=}^$username@$server:${linkdirscd// /=}" >> ~/dropshiprepos/stage.txt
+		
+	fi
+	echo "Link Completed!"
 }
 # SYNCSTAGES ------------------------------------------------------------------
 # Syncstages syncs two or more directories together (one of them is a primary directory,
