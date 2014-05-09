@@ -99,7 +99,6 @@ whereami () {
 gethelp () {
 		echo "HELP"
 		echo ""
-		echo -e "\e[1;94msetprivate.....configure path to private key  \e[0m"
 		echo "sshgo..........ssh to remote server running xdropship 5.0+ under home"
 		echo "               assumes that dropship file exists in the remote server home directory"
 		echo "detail.........shows which are files and which are directories	"
