@@ -23,13 +23,14 @@ so that the directory location is preserved when exiting the program.
 
 Commands (Help):
 		
-		remoteconfig...configure remote server address  
-		ssshuw.........ssh (remote shell) to remote server 
-		sshuw..........ssh to remote server running xdropship 5.0+ under home 
-		               assumes that dropship file exists in the remote server home directory 
+HELP
+
+		setprivate.....configure path to private key  
+		sshgo..........ssh to remote server running xdropship 5.0+ under home
+		               assumes that dropship file exists in the remote server home directory
 		detail.........shows which are files and which are directories	
-		d..............cd to a previously visited directory
-		do.............allow typing a UNIX command and run it (some commands are not supported)
+		d..............undo 'z' command once, cd to immediately visited subdirectory by one level
+		do.............allow typing a UNIX command and run it limitation
 		f..............go to or cd to the first directory
 		aa.............go to or cd to home directory
 		<enter>........list files and directories
@@ -37,18 +38,23 @@ Commands (Help):
 		z..............move up a directory
 		run............run an executable
 		
+		echo   Google Search 
 		
-		UNIX Command Syntax Sugar  
+		google........search the web with Google (Windows + Cygwin)
+		xgoogle.......search the web with Google (Unix)
 		
-		xawk [n].......equivalent to awk '{print $[n]}'
 		
-		Windows  
+		echo  UNIX Command Syntax Sugar  
+		
+		xawk [n].......equivalent to awk '{print $^[n]}', ignore ^
+		
+		echo  Windows  
 		
 		show...........show target directory in Windows (Cygwin only)
 		pop............show currend directory in Windows (Cygwin only)
 		
 		
-		Navigation Assistant Components 
+		echo  Navigation Assistant Components 
 		
 		p..............select a directory
 		flag...........flag the location of the current directory
@@ -63,12 +69,12 @@ Commands (Help):
 		search.........search in favourites (if not found in history) for files with keywords
 		lookup.........look up a file or directory under current directory
 		
-		Download Components 
+		echo  Download Components 
 		
 		downloads......cd to DownloadStore in dropship repository
 		import.........move a file from a download folder (must be set by the browser)
 		(Type repository, go to DownloadStore (directory) and type pop)
-		tag............tag the current directory so that files with filename '...<tag>...' 
+		tagthis...*....tag the current directory so that files with filename '...<tag>...' 
 		can be imported to this directory
 		importx........import all files in download folders by tags see 'tag'
 		tagedit........edit the list of tags on vi		
@@ -83,7 +89,23 @@ Commands (Help):
 		editstages.....edit stage links
 		syncstages.....sync linked stages (if duplicates found files in the primary stage are used)
 		
-		File Manipulation Components
+		
+		m Web Bookmarks [V 7.3] 
+		
+		bookmarkthis....set short cut for a new bookmark
+		bookmarks.......choose a bookmark in a list of bookmarks to run
+		bookmarkclear...clear list of bookmarks
+		
+		
+		mProgram (Executable) Shortcut [V 7] 
+		
+		programthis....set short cut for this program
+		programs.......choose a program in a list of programs to run in the background
+		programscmd....choose a program in a list of programs to run
+		programclear...clear list of programs
+		
+		
+		mFile Manipulation Components
 		
 		copy...........copy a file
 		paste..........paste a copied file
@@ -96,8 +118,9 @@ Commands (Help):
 		zip............zip a directory
 		zipfiles.......zip some files in a directory using temp directory
 		zipsourcecode..zip .h and .cc files for submission
+		addprefixall...add prefix to all filenames in the current directory
 		
-		Setting Components
+		mSetting Components
 		
 		historyoff.....turn off history tracking
 		historyon......turn on history tracking
@@ -116,7 +139,7 @@ Commands (Help):
 		
 		Valgrind   [V.5.3]
 		
-		xvalgrind......valgrind compiled program from all .cc files in the current directory
+		xvalgrind......valgrind compiled porgram from all .cc files in the current directory
 		
 		Redirect  [V.5.3]
 		
@@ -127,7 +150,7 @@ Commands (Help):
 		setpath........set path to dropship program
 		plugin.........run list of plugins (you can add plugin program under the <setting repository>/Plugin)
 		
-		 Localhost Macro Setting
+		Localhost Macro Setting
 		
 		setlocalhost...set current directory path as localhost (you must have localhost beforehand)
 		launch.........run program in under local server		
