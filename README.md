@@ -16,9 +16,8 @@ help section.
 
 Running:
 
-It is recommended to add a shortcut to this program so that it can be run
-from any directory. Otherwise, run the script as '. xdropshipverX.sh'
-so that the directory location is preserved when exiting the program.
+It is recommended to add an alias shortcut to this program in .bashrc so that it can be run
+from any directory. 
 
 
 Commands (Help):
