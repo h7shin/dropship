@@ -93,14 +93,14 @@ HELP
 		syncstages.....sync linked stages (if duplicates found files in the primary stage are used)
 		
 		
-		m Web Bookmarks [V 7.3] 
+		Web Bookmarks [V 7.3] 
 		
 		bookmarkthis....set short cut for a new bookmark
 		bookmarks.......choose a bookmark in a list of bookmarks to run
 		bookmarkclear...clear list of bookmarks
 		
 		
-		mProgram (Executable) Shortcut [V 7] 
+		Program (Executable) Shortcut [V 7] 
 		
 		programthis....set short cut for this program
 		programs.......choose a program in a list of programs to run in the background
@@ -108,7 +108,7 @@ HELP
 		programclear...clear list of programs
 		
 		
-		mFile Manipulation Components
+		File Manipulation Components
 		
 		copy...........copy a file
 		paste..........paste a copied file
@@ -123,7 +123,7 @@ HELP
 		zipsourcecode..zip .h and .cc files for submission
 		addprefixall...add prefix to all filenames in the current directory
 		
-		mSetting Components
+		Setting Components
 		
 		historyoff.....turn off history tracking
 		historyon......turn on history tracking
