@@ -35,7 +35,7 @@ gotolastlocation () {
 signature () {
 	echo "     $(pwd) "
 	echo -e " \e[1;30;32m"
-	echo -e " XDropShip KIWIS [Ver 7.3] \e[0m"
+	echo -e " XDropShip KIWIS [Ver 7.7] \e[0m"
 	echo ""
 	echo "            ... type 'about' to learn more."
 	echo "            ... press enter  to navigate."
@@ -99,6 +99,7 @@ whereami () {
 gethelp () {
 		echo "HELP"
 		echo ""
+		echo -e "\e[1;94msetprivate.....configure path to private key  \e[0m"
 		echo "sshgo..........ssh to remote server running xdropship 5.0+ under home"
 		echo "               assumes that dropship file exists in the remote server home directory"
 		echo "detail.........shows which are files and which are directories	"
@@ -125,7 +126,6 @@ gethelp () {
 		echo ""
 		echo "show...........show target directory in Windows (Cygwin only)"
 		echo "pop............show currend directory in Windows (Cygwin only)"
-		
 		echo ""
 		echo  -e "\e[1;94mNavigation Assistant Components \e[0m"
 		echo ""
@@ -174,7 +174,7 @@ gethelp () {
 		echo ""
 		echo "programthis....set short cut for this program"
 		echo "programs.......choose a program in a list of programs to run in the background"
-		echo "programscmd....choose a program in a list of programs to run"
+		echo "programscmd....choose a program in a list of programs to run in the foreground"
 		echo "programclear...clear list of programs"
 		echo ""
 		echo ""
@@ -301,8 +301,7 @@ linkstages() {
 		then
 			server="linux.student.cs.uwaterloo.ca"
 		fi
-		#echo "ssh $user@$server . xdropshipver5.sh;pwd"
-		ssh $username@$server "cd $path;. xdropshipver5.sh;"
+		ssh $username@$server "cd $path;. xdropshipver7.sh;"
 		scp $username@$server:~/dropshiprepos/last.path last_temp.path
 		linkdirscd=$(cat last_temp.path)
 		rm last_temp.path
@@ -357,16 +356,16 @@ syncstages() {
 		primary="${array_primary[$i]}"
 		secondary="${array_secondary[$i]}"		
 		location=$(pwd)
-		num=$(echo $secondary | egrep "@" | wc -w)
-		fixedlocation="${location// /=}"
-		num2=$(echo $primary | egrep "${location// /=}" | wc -w)
-		#echo $primary | egrep "$location" 
-		echo "Remote...?" $num
-		#echo "Curent directory?" $num2
-		echo "${primary}|"
-		echo "${location}|"
-		
 		if [ "${primary}" == "${location}" ]; then
+			num=$(echo $secondary | egrep "@" | wc -w)
+			fixedlocation="${location// /=}"
+			num2=$(echo $primary | egrep "${location// /=}" | wc -w)
+			#echo $primary | egrep "$location" 
+			echo "Remote...?" $num
+			#echo "Curent directory?" $num2
+			echo "${primary}|"
+			echo "${location}|"
+		
 			mkdir "${secondary//=/ }" 2> /dev/null
 			
 			if [ "$command" == "importoverwrite" ]; then
@@ -466,19 +465,14 @@ if [ -r ~/dropshiprepos/history.opt ]; then
 	done < ~/dropshiprepos/history.opt
 fi
 
-# Set Remote Configuration
+# Set Remote Server Address Configuration
 if [ -r ~/dropshiprepos/remoteconfig.txt ]; then
 	while read arg; do
 		remoteaddress=$arg			
 	done < ~/dropshiprepos/remoteconfig.txt
 fi
 
-if [ -r ~/dropshiprepos/pathtokey.path ]; then
-	while read arg; do
-		pathtokey=$arg			
-	done < ~/dropshiprepos/pathtokey.path
-fi
-
+# OS Configuration
 if [ -r ~/dropshiprepos/os.txt ]; then
 	while read arg; do
 		os=$arg			
@@ -565,7 +559,7 @@ do
 			#http://www.unix.com/unix-dummies-questions-answers/147672-how-stay-remote-shell-after-executing-commands-ssh.html
 			while [ 1 -eq 1 ]; do
 				
-				ssh -t "$remoteaddress" './xdropshipver5.sh; cd $(cat dropshiprepos/last.path)' ';' exec /bin/sh
+				ssh -t "$remoteaddress" './xdropshipver7.sh; cd $(cat dropshiprepos/last.path)' ';' exec /bin/sh
 				echo "Type q to return to local:"
 				read command
 				if [ "$command" == "q" ]; then
@@ -844,7 +838,6 @@ do
 				echo "${opt//=/ }"
 				"${opt//=/ }" # run program
 			fi
-			whereami
 			break
 		done
 	elif [ "$input" == "programs" ]
@@ -1284,21 +1277,22 @@ do
 				ha+=( "${filteredarray[$diff]}" )
 				j=$(($j-1));
 			done
-			if [ $init -eq 0 ]; then
-				${ha[0]//===/ }
-			elif  [ $init -eq 1 ]; then	
-				${ha[0]//===/ } | ${ha[1]//===/ }
-			elif  [ $init -eq 2 ]; then
-				${ha[0]//===/ } | ${ha[1]//===/ } | ${ha[2]//===/ }	
-			elif  [ $init -eq 3 ]; then
-				${ha[0]//===/ } | ${ha[1]//===/ } | ${ha[2]//===/ }	| ${ha[3]//===/ }
-			elif  [ $init -eq 4 ]; then
-				${ha[0]//===/ } | ${ha[1]//===/ } | ${ha[2]//===/ }	| ${ha[3]//===/ }	| ${ha[4]//===/ }	
-			elif  [ $init -eq 5 ]; then
-				${ha[0]//===/ } | ${ha[1]//===/ } | ${ha[2]//===/ }	| ${ha[3]//===/ }	| ${ha[4]//===/ }	| ${ha[5]//===/ }	
-			elif  [ $init -eq 6 ]; then
-				${ha[0]//===/ } | ${ha[1]//===/ } | ${ha[2]//===/ }	| ${ha[3]//===/ }	| ${ha[4]//===/ }	| ${ha[5]//===/ }	| ${ha[6]//===/ }	
+			contents=""
+			numcommands=$init
+			if [ $numcommands -eq 0 ]; then
+				$input
+			else
+				#echo $numcommands
+				while [ $numcommands -ge 0 ];do
+					#echo "compressing"
+					difference=$(($init - $numcommands))
+					#echo $difference
+					contents=$(echo $contents | ${ha[$difference]//===/ })
+					numcommands=$(($numcommands-1))
+					#echo $contents
+				done
 			fi
+			echo $contents
 		fi
 	fi
 	lastinput=$input
